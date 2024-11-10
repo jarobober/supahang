@@ -1,38 +1,26 @@
 <script setup lang="ts">
-const { $gsap } = useNuxtApp()
+import { useIntervalFn } from '@vueuse/core'
 const emit = defineEmits(['end'])
-const counter = ref<number>(5)
-const isCountingDown = ref<boolean>(false)
-let countdownInterval: any = null
-const countSound = new Audio('/countdown.wav')
+const DEFAULT_COUNTDOWN_START = 6
+const counter = ref<number>(DEFAULT_COUNTDOWN_START)
+const countSound = new Audio('/audio/countdown.wav')
 
-// Function to start the countdown
-const startCountdown = () => {
-  if (isCountingDown.value) return
+const { pause, resume, isActive } = useIntervalFn(
+  () => {
+    if (counter.value === DEFAULT_COUNTDOWN_START) {
+      countSound.play()
+    }
 
-  countSound.play()
-  console.log('startCountdown', countSound)
-
-  isCountingDown.value = true
-  countdownInterval = setInterval(() => {
     if (counter.value > 1) {
       counter.value -= 1
     } else {
-      clearInterval(countdownInterval)
-      isCountingDown.value = false
+      pause()
       emit('end')
     }
-  }, 1000)
-}
-
-onMounted(() => {
-  // $gsap.to('#countdown', { duration: 1, opacity: 0 })
-  startCountdown()
-})
-
-onUnmounted(() => {
-  clearInterval(countdownInterval)
-})
+  },
+  1000,
+  { immediateCallback: true }
+)
 </script>
 
 <template>

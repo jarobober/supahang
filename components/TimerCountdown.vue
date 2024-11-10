@@ -16,11 +16,16 @@ const { pause, resume, isActive } = useIntervalFn(
     } else {
       pause()
       emit('end')
+      resetCountdown()
     }
   },
   1000,
   { immediateCallback: true }
 )
+
+const resetCountdown = () => {
+  counter.value = DEFAULT_COUNTDOWN_START
+}
 </script>
 
 <template>

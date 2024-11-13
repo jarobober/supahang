@@ -17,5 +17,5 @@ const isRunning = ref(false)
     </UFormGroup>
     <UButton type="submit" size="xl">Start</UButton>
   </UForm>
-  <TimerClock v-else :config="timer" @end="isRunning = false" />
+  <TimerClockComponent v-else :config="timer" @back="isRunning = false" />
 </template>

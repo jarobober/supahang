@@ -11,7 +11,7 @@ const { pause, resume, isActive } = useIntervalFn(
       countSound.play()
     }
 
-    if (counter.value > 1) {
+    if (counter.value > 0) {
       counter.value -= 1
     } else {
       pause()

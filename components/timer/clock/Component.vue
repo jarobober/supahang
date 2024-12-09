@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useIntervalFn } from '@vueuse/core'
+import { useCountdown } from '~/composables/useCountdown'
+
 const props = defineProps<{ config: any }>()
 const emit = defineEmits(['back'])
+const { decrementTime } = useCountdown()
 const repsCompleted = ref(0)
 let letsGoSound: any
 let completeSound: any
@@ -14,9 +17,8 @@ const setRepTime = () => {
 
 const repInterval = useIntervalFn(
   () => {
-    if (repTime.value > 0) {
-      repTime.value -= 1
-    } else {
+    repTime.value = decrementTime(repTime.value, () => {
+      console.log('countdown finished')
       repInterval.pause()
       if (repsCompleted.value === props.config.repsNumber) {
         completeSound.play()
@@ -26,7 +28,7 @@ const repInterval = useIntervalFn(
         restSound.play()
         restInterval.resume()
       }
-    }
+    })
   },
   1000,
   { immediate: false }
@@ -41,15 +43,14 @@ const setRestTime = () => {
 
 const restInterval = useIntervalFn(
   () => {
-    if (restTime.value > 0) {
-      restTime.value -= 1
-    } else {
+    restTime.value = decrementTime(restTime.value, () => {
+      console.log('rest finished')
       repsCompleted.value++
       restInterval.pause()
       setRepTime()
       letsGoSound.play()
       repInterval.resume()
-    }
+    })
   },
   1000,
   { immediate: false }
@@ -70,7 +71,10 @@ onMounted(() => {
 </script>
 
 <template>
-  {{ config }}
+  <!-- {{ config }}
+  !!!! {{ repTime }} ??? {{ restTime }} -->
+  <div>repInterval: {{ repInterval.isActive }}</div>
+  <div>restInterval: {{ restInterval.isActive }}</div>
   <TimerCountdown v-if="!isStarted" @end="runWorkout()" />
   <div v-else class="flex">
     <div class="w-1/3 flex flex-col">
@@ -85,8 +89,11 @@ onMounted(() => {
         />
       </div>
     </div>
-    <div class="w-2/3">
-      {{ repInterval.isActive ? repTime : restTime }}
+    <div v-if="repInterval.isActive.value" class="w-2/3">
+      {{ repTime }}
+    </div>
+    <div v-if="restInterval.isActive.value" class="w-2/3">
+      {{ restTime }}
     </div>
   </div>
 </template>

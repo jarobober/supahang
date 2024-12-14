@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { useIntervalFn } from '@vueuse/core'
+import { useCountdown } from '~/composables/useCountdown'
+
+const { decrementTime } = useCountdown()
 const emit = defineEmits(['end'])
-const DEFAULT_COUNTDOWN_START = 6
-const counter = ref<number>(DEFAULT_COUNTDOWN_START)
+const DEFAULT_COUNTDOWN_START = '00:05'
+const counter = ref<string>(DEFAULT_COUNTDOWN_START)
 const countSound = new Audio('/audio/countdown.wav')
 
 const { pause, resume, isActive } = useIntervalFn(
@@ -11,13 +14,11 @@ const { pause, resume, isActive } = useIntervalFn(
       countSound.play()
     }
 
-    if (counter.value > 0) {
-      counter.value -= 1
-    } else {
+    counter.value = decrementTime(counter.value, () => {
       pause()
       emit('end')
       resetCountdown()
-    }
+    })
   },
   1000,
   { immediateCallback: true }

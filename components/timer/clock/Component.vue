@@ -71,10 +71,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- {{ config }}
-  !!!! {{ repTime }} ??? {{ restTime }} -->
-  <div>repInterval: {{ repInterval.isActive }}</div>
-  <div>restInterval: {{ restInterval.isActive }}</div>
   <TimerCountdown v-if="!isStarted" @end="runWorkout()" />
   <div v-else class="flex">
     <div class="w-1/3 flex flex-col">
@@ -89,10 +85,10 @@ onMounted(() => {
         />
       </div>
     </div>
-    <div v-if="repInterval.isActive.value" class="w-2/3">
+    <div v-if="repInterval.isActive.value" class="w-2/3 text-6xl font-bold mt-32">
       {{ repTime }}
     </div>
-    <div v-if="restInterval.isActive.value" class="w-2/3">
+    <div v-if="restInterval.isActive.value" class="w-2/3 text-6xl font-bold mt-32">
       {{ restTime }}
     </div>
   </div>

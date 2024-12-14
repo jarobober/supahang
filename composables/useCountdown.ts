@@ -9,10 +9,7 @@ export const useCountdown = () => {
     // Decrement
     if (totalSeconds > 0) {
       totalSeconds -= 1
-    }
-
-    // Check if time has reached zero
-    if (totalSeconds === 0) {
+    } else {
       onComplete()
     }
 

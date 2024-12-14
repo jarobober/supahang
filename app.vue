@@ -2,9 +2,9 @@
   <div class="hero">
     <div class="overlay"></div>
     <div class="content">
-      <div class="absolute top-0 left-0 p-2 w-[200px] flex items-center">
+      <div class="absolute top-0 left-0 p-4 w-[200px] flex items-center">
         <img src="/images/logo.svg" alt="Nuxt Logo" width="25" class="mr-1" />
-        <span class="font-bold">supahang</span>
+        <span class="font-bold text-lg">supahang</span>
       </div>
       <NuxtPage />
     </div>

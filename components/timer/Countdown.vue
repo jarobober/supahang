@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onUnmounted } from 'vue'
 import { useIntervalFn } from '@vueuse/core'
 import { useCountdown } from '~/composables/useCountdown'
 
@@ -27,6 +28,10 @@ const { pause, resume, isActive } = useIntervalFn(
 const resetCountdown = () => {
   counter.value = DEFAULT_COUNTDOWN_START
 }
+
+onUnmounted(() => {
+  pause()
+})
 </script>
 
 <template>

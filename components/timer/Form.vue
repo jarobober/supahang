@@ -1,21 +1,21 @@
 <script setup lang="ts">
-const props = defineProps<{ config: any }>()
+const props = defineProps<{ config: any; isRunning: boolean }>()
 const timer = ref(props.config)
-const isRunning = ref(false)
+const emit = defineEmits(['start'])
 </script>
 
 <template>
-  <UForm v-if="!isRunning" :state="timer" class="space-y-4" @submit="isRunning = true">
+  <UForm v-if="!isRunning" :state="timer" class="space-y-4" @submit="emit('start', timer)">
     <UFormGroup label="Rep time" name="repTime">
       <UInput v-model="timer.repTime" type="time" min="00:00" max="59:59" />
     </UFormGroup>
     <UFormGroup label="Rest time" name="restTime">
-      <UInput v-model="timer.repTime" type="time" min="00:00" max="59:59" />
+      <UInput v-model="timer.restTime" type="time" min="00:00" max="59:59" />
     </UFormGroup>
     <UFormGroup label="Reps number" name="repsNumber">
-      <UInput v-model="timer.repsNumber" type="number" />
+      <!-- <UInput v-model="timer.repsNumber" type="number" /> -->
+      <TimerFormxRange v-model="timer.repsNumber" />
     </UFormGroup>
     <UButton type="submit" size="xl">Start</UButton>
   </UForm>
-  <TimerClockComponent v-else :config="timer" @back="isRunning = false" />
 </template>

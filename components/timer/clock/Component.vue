@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onUnmounted } from 'vue'
 import { useIntervalFn } from '@vueuse/core'
 import { useCountdown } from '~/composables/useCountdown'
 
@@ -22,6 +23,7 @@ const repInterval = useIntervalFn(
       repInterval.pause()
       if (repsCompleted.value === props.config.repsNumber) {
         completeSound.play()
+        repInterval.pause()
         emit('back')
       } else {
         setRestTime()
@@ -67,6 +69,11 @@ onMounted(() => {
   letsGoSound = new Audio('/audio/lets-go.wav')
   completeSound = new Audio('/audio/complete.wav')
   restSound = new Audio('/audio/relax.wav')
+})
+
+onUnmounted(() => {
+  repInterval.pause()
+  restInterval.pause()
 })
 </script>
 

@@ -10,10 +10,11 @@ const emit = defineEmits(['start'])
       <UInput v-model="timer.repTime" type="time" min="00:00" max="59:59" />
     </UFormGroup>
     <UFormGroup label="Rest time" name="restTime">
-      <UInput v-model="timer.repTime" type="time" min="00:00" max="59:59" />
+      <UInput v-model="timer.restTime" type="time" min="00:00" max="59:59" />
     </UFormGroup>
     <UFormGroup label="Reps number" name="repsNumber">
-      <UInput v-model="timer.repsNumber" type="number" />
+      <!-- <UInput v-model="timer.repsNumber" type="number" /> -->
+      <TimerFormxRange v-model="timer.repsNumber" />
     </UFormGroup>
     <UButton type="submit" size="xl">Start</UButton>
   </UForm>

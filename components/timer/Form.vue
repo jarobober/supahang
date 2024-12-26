@@ -6,16 +6,15 @@ const emit = defineEmits(['start'])
 
 <template>
   <UForm v-if="!isRunning" :state="timer" class="space-y-4" @submit="emit('start', timer)">
-    <UFormGroup label="Rep time" name="repTime">
-      <UInput v-model="timer.repTime" type="time" min="00:00" max="59:59" />
+    <UFormGroup label="Rep time" name="repTime" size="lg" class="mt-6">
+      <UInput v-model="timer.repTime" type="time" min="00:00" max="59:59" class="mt-2" />
     </UFormGroup>
-    <UFormGroup label="Rest time" name="restTime">
-      <UInput v-model="timer.restTime" type="time" min="00:00" max="59:59" />
+    <UFormGroup label="Rest time" name="restTime" size="lg" class="mt-6">
+      <UInput v-model="timer.restTime" type="time" min="00:00" max="59:59" class="mt-2" />
     </UFormGroup>
-    <UFormGroup label="Reps number" name="repsNumber">
-      <!-- <UInput v-model="timer.repsNumber" type="number" /> -->
-      <TimerFormxRange v-model="timer.repsNumber" />
+    <UFormGroup label="Reps number" name="repsNumber" size="lg" class="mt-6">
+      <TimerFormxRange v-model="timer.repsNumber" class="mt-2" />
     </UFormGroup>
-    <UButton type="submit" size="xl">Start</UButton>
+    <UButton type="submit" size="lg" block class="!mt-8">Start</UButton>
   </UForm>
 </template>

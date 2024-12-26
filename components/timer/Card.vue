@@ -25,7 +25,7 @@ const startTimer = (config: any) => {
 </script>
 
 <template>
-  <UCard class="h-[540px] w-[400px]" :ui="{ body: { base: 'h-full' } }">
+  <UCard class="h-[480px] w-[400px] relative" :ui="{ body: { base: 'h-full' } }">
     <div v-if="!isTimerRunning">
       <UTabs :items="items" :ui="{ list: { tab: { font: 'font-light' } } }">
         <template #max-hangs

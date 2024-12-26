@@ -11,7 +11,7 @@ const range = {
 
 <template>
   <div class="flex items-center">
-    <UInput v-model="modelValue" disabled class="mr-2 w-[45px]" />
+    <UInput v-model="modelValue" disabled class="mr-4 w-[53px]" />
     <URange :min="range.min" :max="range.max" v-model="modelValue" />
   </div>
 </template>

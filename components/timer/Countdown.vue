@@ -35,5 +35,6 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div id="countdown" class="text-8xl font-bold mt-32">{{ counter }}</div>
+  <div>Get ready!</div>
+  <div id="countdown" class="text-8xl font-bold tabular-nums">{{ counter }}</div>
 </template>

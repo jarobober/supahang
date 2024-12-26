@@ -25,7 +25,7 @@ watch(
       'bg-emerald-500':
         (restInterval.isActive.value && index === repsCompleted) || index < repsCompleted,
     }"
-    class="w-[20px] h-[20px] bg-[#1f2937] border border-slate-400 rounded mb-3"
+    class="w-[20px] h-[20px] bg-[#1f2937] border border-slate-400 rounded mb-3 mr-3"
   ></div>
   <div
     v-if="withRest"
@@ -33,7 +33,7 @@ watch(
       'blinking-rest-animation': restInterval.isActive.value && currentRep,
       'background-after-rest': index < repsCompleted,
     }"
-    class="w-[20px] h-[20px] bg-[#1f2937] rounded mb-3"
+    class="w-[20px] h-[20px] bg-[#1f2937] rounded mb-3 mr-3"
   ></div>
 </template>
 

@@ -9,9 +9,13 @@ const goToFormStep = (config: any) => {
   formConfig.value = config
   currentStep.value = STEPS.FORM
 }
+
+const resetStepInit = () => {
+  currentStep.value = STEPS.INIT
+}
 </script>
 
 <template>
   <HeroCard v-if="currentStep === STEPS.INIT" @show-form="goToFormStep" />
-  <TimerCard v-if="currentStep === STEPS.FORM" :config="formConfig" />
+  <TimerCard v-if="currentStep === STEPS.FORM" :config="formConfig" @back="resetStepInit" />
 </template>

@@ -19,7 +19,7 @@ export const DEFAULT_TIMERS = {
 export const SESSION_TYPES = [
   {
     title: 'Max hangs',
-    subtitle: '10 sec hangs, 2 min rest. Build maximum strength.',
+    subtitle: '10 sec hangs, 2 min rest. Build strength.',
     icon: 'i-ph-barbell',
     info: 'Max hangs involve short, intense hangs (around 10 seconds) with near-maximal effort to build grip strength, followed by 2-3 minutes of rest. Use the smallest hold you can hang comfortably without pain or slipping, and ensure proper warm-up. Avoid overtraining to prevent finger injuries.',
     timer: DEFAULT_TIMERS.maxHangs,

@@ -78,9 +78,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <TimerCountdown v-if="!isStarted" @end="runWorkout()" />
-  <div v-else class="flex">
-    <div class="w-1/3 flex flex-col">
+  <TimerCountdown v-if="!isStarted" @end="runWorkout()" class="w-full h-full" />
+  <div v-else class="flex h-full">
+    <div class="flex flex-col flex-wrap justify-center">
       <div v-for="i in config.repsNumber" :key="i">
         <TimerClockStepBox
           :rep-interval="repInterval"
@@ -92,11 +92,16 @@ onUnmounted(() => {
         />
       </div>
     </div>
-    <div v-if="repInterval.isActive.value" class="w-2/3 text-6xl font-bold mt-32">
-      {{ repTime }}
-    </div>
-    <div v-if="restInterval.isActive.value" class="w-2/3 text-6xl font-bold mt-32">
-      {{ restTime }}
+    <div class="flex-1 flex items-center justify-center relative">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 text-xl font-light opacity-50">
+        {{ repInterval.isActive.value ? 'Hang' : 'Rest' }}
+      </div>
+      <div v-if="repInterval.isActive.value" class="text-7xl font-bold tabular-nums">
+        {{ repTime }}
+      </div>
+      <div v-if="restInterval.isActive.value" class="text-7xl font-bold tabular-nums">
+        {{ restTime }}
+      </div>
     </div>
   </div>
 </template>

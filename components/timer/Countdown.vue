@@ -35,7 +35,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>Get ready!</div>
+  <div class="absolute left-1/2 -translate-x-1/2 text-xl font-light opacity-50">Get ready!</div>
   <div
     id="countdown"
     class="text-8xl font-bold tabular-nums absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"

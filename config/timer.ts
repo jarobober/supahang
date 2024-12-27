@@ -15,3 +15,24 @@ export const DEFAULT_TIMERS = {
     repsNumber: 10,
   },
 }
+
+export const SESSION_TYPES = [
+  {
+    title: 'Max hangs',
+    subtitle: '10 sec hangs, 3 min rest. Build maximum strength.',
+    icon: 'i-heroicons-light-bulb',
+    timer: DEFAULT_TIMERS.maxHangs,
+  },
+  {
+    title: 'Repeaters',
+    subtitle: '7 sec on, 3 sec off. Boost endurance.',
+    icon: 'i-heroicons-light-bulb',
+    timer: DEFAULT_TIMERS.repeaters,
+  },
+  {
+    title: 'Custom',
+    subtitle: 'Set your own times and intervals.',
+    icon: 'i-heroicons-light-bulb',
+    timer: DEFAULT_TIMERS.custom,
+  },
+]

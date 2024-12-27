@@ -93,8 +93,8 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="flex-1 flex items-center justify-center relative">
-      <div class="absolute top-0 left-1/2 -translate-x-1/2">
-        {{ repInterval.isActive.value ? 'Workout' : 'Rest' }}
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 text-xl font-light opacity-50">
+        {{ repInterval.isActive.value ? 'Hang' : 'Rest' }}
       </div>
       <div v-if="repInterval.isActive.value" class="text-7xl font-bold tabular-nums">
         {{ repTime }}

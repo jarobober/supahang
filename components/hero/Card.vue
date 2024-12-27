@@ -27,7 +27,7 @@ const goToForm = (config: any) => {
 </script>
 
 <template>
-  <UCard class="h-[480px] w-[440px] relative" :ui="{ body: { base: 'h-full text-left' } }">
+  <UCard class="h-[500px] w-[440px] relative" :ui="{ body: { base: 'h-full text-left' } }">
     <div class="flex flex-col justify-between h-full">
       <div>
         <h1 class="text-4xl font-bold mb-2">Time to Hang</h1>
@@ -37,7 +37,13 @@ const goToForm = (config: any) => {
         </p>
       </div>
       <div>
-        <HeroSessionType v-for="(item, i) in SESSION_TYPES" :key="i" :type="item" class="mt-4" />
+        <HeroSessionType
+          v-for="(item, i) in SESSION_TYPES"
+          :key="i"
+          :type="item"
+          class="mt-4"
+          @click="goToForm(item)"
+        />
       </div>
     </div>
   </UCard>

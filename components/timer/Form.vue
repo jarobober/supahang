@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const props = defineProps<{ config: any; isRunning: boolean }>()
-const timer = ref(props.config)
+const timer = ref(props.config.timer)
 const emit = defineEmits(['start'])
 </script>
 
 <template>
   <UForm v-if="!isRunning" :state="timer" class="space-y-4" @submit="emit('start', timer)">
+    <p class="text-sm text-left text-slate-400">{{ config.info }}</p>
     <UFormGroup label="Rep time" name="repTime" size="lg" class="mt-6">
       <UInput v-model="timer.repTime" type="time" min="00:00" max="59:59" class="mt-2" />
     </UFormGroup>

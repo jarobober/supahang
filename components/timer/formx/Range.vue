@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineModel, computed } from 'vue'
+import { defineModel } from 'vue'
 
 const modelValue = defineModel<number>()
 
@@ -11,7 +11,7 @@ const range = {
 
 <template>
   <div class="flex items-center">
-    <UInput v-model="modelValue" disabled class="mr-4 w-[53px]" />
+    <UInput v-model="modelValue" disabled type="number" class="mr-4 w-[53px]" />
     <URange :min="range.min" :max="range.max" v-model="modelValue" />
   </div>
 </template>

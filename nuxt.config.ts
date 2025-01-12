@@ -6,4 +6,9 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'dark',
   },
+  runtimeConfig: {
+    public: {
+      gtagId: 'GTM-WWB3PCTM',
+    },
+  },
 })

@@ -2,6 +2,8 @@
 const props = defineProps<{
   repInterval: Record<string, any>
   restInterval: Record<string, any>
+  repPaused: boolean
+  restPaused: boolean
   repsCompleted: number
   index: number
   withRest: boolean
@@ -21,7 +23,7 @@ watch(
 <template>
   <div
     :class="{
-      'blinking-rep-animation': repInterval.isActive.value && currentRep,
+      'blinking-rep-animation': (repInterval.isActive.value || repPaused) && currentRep,
       'bg-emerald-500':
         (restInterval.isActive.value && index === repsCompleted) || index < repsCompleted,
     }"
@@ -30,7 +32,7 @@ watch(
   <div
     v-if="withRest"
     :class="{
-      'blinking-rest-animation': restInterval.isActive.value && currentRep,
+      'blinking-rest-animation': (restInterval.isActive.value || restPaused) && currentRep,
       'background-after-rest': index < repsCompleted,
     }"
     class="w-[20px] h-[20px] bg-[#1f2937] rounded mb-3 mr-3"

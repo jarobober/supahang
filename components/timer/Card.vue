@@ -18,7 +18,7 @@ const emit = defineEmits(['back'])
 </script>
 
 <template>
-  <UCard class="min-h-[400px] w-[400px] relative" :ui="{ body: { base: 'h-full' } }">
+  <UCard class="h-[500px] w-[400px] relative" :ui="{ body: { base: 'h-full' } }">
     <TimerForm
       v-if="!isTimerRunning"
       :config
@@ -26,6 +26,6 @@ const emit = defineEmits(['back'])
       @start="startTimer"
       @back="backToInit"
     />
-    <TimerClockComponent v-else :config="timer" @back="isTimerRunning = false" />
+    <TimerClockComponent v-else :config="timer" @back="isTimerRunning = false" class="h-full" />
   </UCard>
 </template>
